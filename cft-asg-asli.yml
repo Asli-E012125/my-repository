@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  This template creates an ASG behind an ALB
+  
+Parameters:
+
+  pVpcId:
+    Description: VPC for Autoscaling
+    Type: AWS::EC2::VPC::Id
+  
+Resources:
+
+  rSecGrp:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH and HTTP
+      GroupName: SSHandHTTP
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      VpcId: !Ref pVpcId
+
+rALB:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: ALBforASG
+      Scheme: internet-facing
+      SecurityGroups:
+        SecurityGroups
+      Subnets:
+        Subnets
+      Tags:
+        Tags
+      Type: application
+
+  
+# Outputs:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

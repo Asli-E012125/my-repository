@@ -41,7 +41,7 @@ WebServer:
           yum update -y
           yum install httpd -y
           cd /var/www/html
-          FOLDER="https://raw.githubusercontent.com/altazbhanji/my-repository/main/Project-101-kittens-carousel-static-website-ec2/static-web/"
+          FOLDER="https://raw.githubusercontent.com//Asli-E012125/my-repository/main/Project-101-kittens-carousel-static-website-ec2/static-web/"
           wget ${FOLDER}index.html
           wget ${FOLDER}cat0.jpg
           wget ${FOLDER}cat1.jpg
@@ -50,6 +50,6 @@ WebServer:
           systemctl start httpd
           systemctl enable httpd
 
-
+        
 
 #Outputs:
