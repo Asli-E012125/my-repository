@@ -8,6 +8,11 @@ Parameters:
     Description: VPC for Autoscaling
     Type: AWS::EC2::VPC::Id
   
+  PSubnets:
+    Description: Subnets where ALB can send traffic
+    Type: List<AWS::EC2::Subnet::Id>
+    
+
 Resources:
 
   rSecGrp:
@@ -32,15 +37,12 @@ rALB:
       Name: ALBforASG
       Scheme: internet-facing
       SecurityGroups:
-        SecurityGroups
-      Subnets:
-        Subnets
-      Tags:
-        Tags
-      Type: application
+      - !GetAtt rSecGrp.GroupId
+      Subnets: !Ref pSubnets
+      Type: application 
 
   
-# Outputs:
+# Outputs: 
 
 
 
